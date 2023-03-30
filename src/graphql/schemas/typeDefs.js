@@ -7,6 +7,12 @@ const typeUsers = gql`
 
   extend type Mutation {
     auth(email: String!, password: String!): User!
+    register(
+      email: String!
+      username: String!
+      password: String!
+      id: ID!
+    ): Boolean!
   }
 
   type User {
