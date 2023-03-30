@@ -1,4 +1,4 @@
-const { users } = require('./query/');
+const { users } = require('./query');
 const { auth, register } = require('./mutation');
 
 const usersResolver = {

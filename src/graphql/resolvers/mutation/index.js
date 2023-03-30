@@ -1,7 +1,7 @@
 const auth = async (_, { password, email }, { knex }) => {
   return await knex('users').first('id', 'email', 'password').where({
-    email: email,
-    password: password,
+    email,
+    password,
   });
 };
 

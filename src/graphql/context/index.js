@@ -1,4 +1,4 @@
-const knex = require('../../database/index.js');
+const knex = require('../../database/');
 
 const context = () => {
   return {

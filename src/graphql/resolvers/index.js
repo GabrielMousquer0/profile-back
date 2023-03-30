@@ -1,1 +1,1 @@
-module.exports = require('./graphql.js');
+module.exports = require('./resolvers.js');
