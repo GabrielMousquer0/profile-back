@@ -5,7 +5,7 @@ exports.up = function (knex) {
     table.string('email').notNullable();
     table.string('password').notNullable();
     table.timestamp('created_at').defaultTo(knex.fn.now());
-    table.string('role').defaultTo('Simple');
+    table.string('role').notNullable().defaultTo('Simple');
   });
 };
 exports.down = function (knex) {
