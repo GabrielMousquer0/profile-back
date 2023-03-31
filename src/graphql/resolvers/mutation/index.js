@@ -1,8 +1,9 @@
-const auth = async (_, { password, email }, { knex }) => {
-  return await knex('users').first('id', 'email', 'password').where({
-    email,
-    password,
-  });
+const auth = async (_, { email }, { knex }) => {
+  return await knex('users')
+    .first('id', 'email', 'password', 'username', 'role')
+    .where({
+      email,
+    });
 };
 
 const register = async (_, args, { knex }) => {
