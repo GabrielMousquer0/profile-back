@@ -9,7 +9,9 @@ const typeUsers = gql`
   extend type Mutation {
     auth(email: String!, password: String!): User!
     register(email: String!, username: String!, password: String!): Boolean!
-    edit(email: String, username: String, password: String, avatar: String, id: ID!): User!
+    editEmail(email: String, id: ID!): User!
+    editUsername(username: String, id: ID!): User!
+    editPassword(password: String, id: ID!): User!
   }
 
   type User {
