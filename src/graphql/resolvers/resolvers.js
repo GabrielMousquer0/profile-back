@@ -1,5 +1,5 @@
 const { users } = require('./query');
-const { auth, register } = require('./mutation');
+const { auth, register, edit } = require('./mutation');
 
 const usersResolver = {
   Query: {
@@ -8,6 +8,7 @@ const usersResolver = {
   Mutation: {
     auth,
     register,
+    edit,
   },
 };
 

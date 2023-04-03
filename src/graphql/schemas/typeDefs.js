@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const { gql } = require('apollo-server');
 
 const typeUsers = gql`
@@ -8,6 +9,7 @@ const typeUsers = gql`
   extend type Mutation {
     auth(email: String!, password: String!): User!
     register(email: String!, username: String!, password: String!): Boolean!
+    edit(email: String, username: String, password: String, avatar: String, id: ID!): User!
   }
 
   type User {
@@ -17,6 +19,7 @@ const typeUsers = gql`
     email: String!
     created_at: String
     role: String
+    avatar: String
   }
 `;
 
