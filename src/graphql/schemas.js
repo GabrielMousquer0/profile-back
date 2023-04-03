@@ -1,5 +1,5 @@
 const { gql } = require('apollo-server');
-const { usersResolver } = require('./resolvers/');
+const { usersResolver } = require('./resolvers');
 const { typeUsers } = require('./schemas/');
 
 const rootTypeDefs = gql`
