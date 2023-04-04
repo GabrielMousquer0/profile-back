@@ -3,6 +3,10 @@ const editEmail = async (_, { email, id }, { knex }) => {
     .where({ id })
     .returning('email')
     .update({ email });
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/development
   return emailUpdate;
 };
 const editUsername = async (_, { username, id }, { knex }) => {
@@ -10,6 +14,10 @@ const editUsername = async (_, { username, id }, { knex }) => {
     .where({ id })
     .returning('username')
     .update({ username });
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/development
   return usernameUpdate;
 };
 const editPassword = async (_, { password, id }, { knex, bcrypt }) => {
@@ -18,6 +26,10 @@ const editPassword = async (_, { password, id }, { knex, bcrypt }) => {
     .where({ id })
     .returning('password')
     .update({ password: passwordHashUpdate });
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/development
   return passwordUpdate;
 };
 const editAvatar = async (_, { avatar, id }, { knex }) => {
