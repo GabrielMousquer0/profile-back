@@ -5,6 +5,7 @@ const {
   editEmail,
   editUsername,
   editPassword,
+  editAvatar,
 } = require('./mutation');
 
 const usersResolver = {
@@ -17,6 +18,7 @@ const usersResolver = {
     editEmail,
     editUsername,
     editPassword,
+    editAvatar,
   },
 };
 

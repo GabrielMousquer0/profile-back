@@ -12,6 +12,7 @@ const typeUsers = gql`
     editEmail(email: String, id: ID!): User!
     editUsername(username: String, id: ID!): User!
     editPassword(password: String, id: ID!): User!
+    editAvatar(avatar: String, id: ID!): User!
   }
 
   type User {

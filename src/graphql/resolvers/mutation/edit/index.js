@@ -3,7 +3,6 @@ const editEmail = async (_, { email, id }, { knex }) => {
     .where({ id })
     .returning('email')
     .update({ email });
-  console.log(emailUpdate);
   return emailUpdate;
 };
 const editUsername = async (_, { username, id }, { knex }) => {
@@ -11,7 +10,6 @@ const editUsername = async (_, { username, id }, { knex }) => {
     .where({ id })
     .returning('username')
     .update({ username });
-  console.log(usernameUpdate);
   return usernameUpdate;
 };
 const editPassword = async (_, { password, id }, { knex, bcrypt }) => {
@@ -20,12 +18,19 @@ const editPassword = async (_, { password, id }, { knex, bcrypt }) => {
     .where({ id })
     .returning('password')
     .update({ password: passwordHashUpdate });
-  console.log(passwordUpdate);
   return passwordUpdate;
+};
+const editAvatar = async (_, { avatar, id }, { knex }) => {
+  const [avatarUpdate] = await knex('users')
+    .where({ id })
+    .returning('avatar')
+    .update({ avatar });
+  return avatarUpdate;
 };
 
 module.exports = {
   editEmail,
   editPassword,
   editUsername,
+  editAvatar,
 };
