@@ -13,6 +13,8 @@ const typeUsers = gql`
     editUsername(username: String, id: ID!): User!
     editPassword(password: String, id: ID!): User!
     editAvatar(avatar: String, id: ID!): User!
+    description(description: String, id: ID!): User!
+    languages(input: LanguageInput, id: ID!): langs!
   }
 
   type User {
@@ -23,6 +25,20 @@ const typeUsers = gql`
     created_at: String
     role: String
     avatar: String
+    description: String
+    language: [langs]
+  }
+
+  type langs {
+    javascript: String
+    python: String
+    typescript: String
+  }
+  
+  input LanguageInput {
+    javascript: String
+    python: String
+    typescript: String
   }
 `;
 
