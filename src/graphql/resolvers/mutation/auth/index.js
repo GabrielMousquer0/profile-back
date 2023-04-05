@@ -1,6 +1,14 @@
 const auth = async (_, { email, password }, { knex, bcrypt }) => {
   const userAuth = await knex('users')
-    .first('id', 'email', 'password', 'username', 'role', 'avatar')
+    .first(
+      'id',
+      'email',
+      'password',
+      'username',
+      'role',
+      'avatar',
+      'created_at',
+    )
     .where({
       email,
     });
