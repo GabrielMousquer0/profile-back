@@ -11,6 +11,8 @@ exports.up = function (knex) {
       .defaultTo(
         'https://imgs.search.brave.com/IAtJtSNSIVSRMro9vXSxnc2FpSrB-ZeOLbZY9nhKJDc/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9ib29r/aW5nLnNpL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDE4LzEyL2Rl/ZmF1bHRfYXZhdGFy/LTIwNDh4MjA0OC5w/bmc',
       );
+    table.text('description', { longText: true }).defaultTo('');
+    table.specificType('language', 'text ARRAY');
   });
 };
 exports.down = function (knex) {
