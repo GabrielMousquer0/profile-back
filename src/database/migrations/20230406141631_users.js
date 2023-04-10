@@ -1,5 +1,5 @@
 exports.up = function (knex) {
-  return knex.schema.createTable('users', (table) => {
+  return knex.schema.createTable('users', function (table) {
     table.increments('id').primary();
     table.string('username', 20).notNullable();
     table.string('email').notNullable();
@@ -12,9 +12,9 @@ exports.up = function (knex) {
         'https://imgs.search.brave.com/IAtJtSNSIVSRMro9vXSxnc2FpSrB-ZeOLbZY9nhKJDc/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9ib29r/aW5nLnNpL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDE4LzEyL2Rl/ZmF1bHRfYXZhdGFy/LTIwNDh4MjA0OC5w/bmc',
       );
     table.text('description', { longText: true }).defaultTo('');
-    table.specificType('language', 'text ARRAY');
   });
 };
+
 exports.down = function (knex) {
   return knex.schema.dropTable('users');
 };
