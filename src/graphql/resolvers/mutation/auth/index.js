@@ -8,10 +8,12 @@ const auth = async (_, { email, password }, { knex, bcrypt }) => {
       'role',
       'avatar',
       'created_at',
+      'description',
     )
     .where({
       email,
     });
+
   const hashedPassword = await bcrypt.compare(password, userAuth.password);
   if (hashedPassword) {
     return userAuth;
