@@ -1,4 +1,4 @@
 const { description } = require('./description.js');
-const { languages } = require('./languages.js');
+const { editLanguages } = require('./languages.js');
 
-module.exports = { description, languages };
+module.exports = { description, editLanguages };

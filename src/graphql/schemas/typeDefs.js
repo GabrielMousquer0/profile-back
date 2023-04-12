@@ -4,6 +4,7 @@ const { gql } = require('apollo-server');
 const typeUsers = gql`
   extend type Query {
     users: [User!]!
+    languagesUser(id: ID!): User
   }
 
   extend type Mutation {
@@ -14,7 +15,7 @@ const typeUsers = gql`
     editPassword(password: String, id: ID!): User!
     editAvatar(avatar: String, id: ID!): User!
     description(description: String, id: ID!): User!
-    languages(input: LanguageInput, id: ID!): langs!
+    editLanguages(id: ID!, languages: [ID!]): Boolean!
   }
 
   type User {
@@ -26,20 +27,17 @@ const typeUsers = gql`
     role: String
     avatar: String
     description: String
-    language: [langs]
+    languages: [Languages]
   }
 
-  type langs {
-    javascript: String
-    python: String
-    typescript: String
+  type Languages {
+    id: ID!
+    name: String!
+    icon: String
+    status: Boolean
   }
-  
-  input LanguageInput {
-    javascript: String
-    python: String
-    typescript: String
-  }
+
+
 `;
 
 module.exports = { typeUsers };

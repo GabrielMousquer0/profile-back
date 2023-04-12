@@ -1,4 +1,5 @@
-const { users } = require('./query');
+const { users, languagesUser } = require('./query');
+const { languages } = require('./field');
 const {
   auth,
   register,
@@ -7,12 +8,13 @@ const {
   editPassword,
   editAvatar,
   description,
-  languages,
+  editLanguages,
 } = require('./mutation');
 
 const usersResolver = {
   Query: {
     users,
+    languagesUser,
   },
   Mutation: {
     auth,
@@ -22,6 +24,9 @@ const usersResolver = {
     editPassword,
     editAvatar,
     description,
+    editLanguages,
+  },
+  User: {
     languages,
   },
 };
