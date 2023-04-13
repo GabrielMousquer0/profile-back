@@ -1,3 +1,3 @@
-const { languages } = require('./user/languages.js');
+const { languages } = require('./languages.js');
 
 module.exports = { languages };

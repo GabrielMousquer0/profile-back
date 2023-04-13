@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 const { gql } = require('apollo-server');
 
 const typeUsers = gql`
@@ -37,8 +36,6 @@ const typeUsers = gql`
     icon: String
     status: Boolean
   }
-
-
 `;
 
 module.exports = { typeUsers };

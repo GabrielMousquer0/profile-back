@@ -1,7 +1,8 @@
 const { auth } = require('./auth');
 const { editEmail, editPassword, editUsername, editAvatar } = require('./edit');
 const { register } = require('./register');
-const { description, editLanguages } = require('./user');
+const { description } = require('./description');
+const { editLanguages } = require('./languages');
 
 module.exports = {
   auth,
