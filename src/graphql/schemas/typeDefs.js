@@ -5,6 +5,7 @@ const typeUsers = gql`
     users: [User!]!
     viewUser(id: ID!): User!
     languagesUser(id: ID!): User
+    searchUser(username: String!): [User]
   }
 
   extend type Mutation {
