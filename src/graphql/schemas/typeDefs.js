@@ -4,6 +4,7 @@ const { gql } = require('apollo-server');
 const typeUsers = gql`
   extend type Query {
     users: [User!]!
+    viewUser(id: ID!): User!
     languagesUser(id: ID!): User
   }
 
