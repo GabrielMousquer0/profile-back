@@ -3,7 +3,7 @@ const languagesUser = async (_, { id }, { knex }) => {
     .join('languages', 'languages.id', 'users_languages.language')
     .where('user', id);
   if (languages == '') {
-    return [{ id: 0 }];
+    return [{ id: 0, name: '' }];
   }
 
   return languages;
