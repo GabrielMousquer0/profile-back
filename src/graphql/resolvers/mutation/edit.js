@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
 const editEmail = async (_, { email, id }, { knex }) => {
   const [emailUpdate] = await knex('users')
     .where({ id })
@@ -12,12 +14,12 @@ const editUsername = async (_, { username, id }, { knex }) => {
     .update({ username });
   return usernameUpdate;
 };
-const editPassword = async (_, { password, id }, { knex, bcrypt }) => {
+const editPassword = async (_, { password, id }, { knex }) => {
   const passwordHashUpdate = await bcrypt.hash(password, 10);
   const [passwordUpdate] = await knex('users')
     .where({ id })
-    .returning('password')
-    .update({ password: passwordHashUpdate });
+    .update({ password: passwordHashUpdate })
+    .returning('username', 'email');
   return passwordUpdate;
 };
 const editAvatar = async (_, { avatar, id }, { knex }) => {
