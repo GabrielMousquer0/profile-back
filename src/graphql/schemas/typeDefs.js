@@ -4,8 +4,8 @@ const typeUsers = gql`
   extend type Query {
     users: [User!]!
     viewUser(id: ID!): User!
-    languagesUser(id: ID!): User
-    searchUser(username: String!): [User]
+    languagesUser(id: ID!): User!
+    searchUser(username: String!): [User!]!
   }
 
   extend type Mutation {
@@ -21,14 +21,14 @@ const typeUsers = gql`
 
   type User {
     id: ID!
-    username: String
+    username: String!
     password: String!
     email: String!
-    created_at: String
-    role: String
-    avatar: String
-    description: String
-    languages: [Languages]
+    created_at: String!
+    role: String!
+    avatar: String!
+    description: String!
+    languages: [Languages!]!
   }
 
   type Languages {
