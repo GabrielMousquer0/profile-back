@@ -1,9 +1,9 @@
 const { ApolloServer } = require('apollo-server');
-const { resolvers, typeDefs } = require('./graphql/schemas.js');
+const { schema } = require('./graphql/build');
 const { context } = require('./graphql/context/');
 require('dotenv').config();
 
-const server = new ApolloServer({ typeDefs, resolvers, context });
+const server = new ApolloServer({ schema, context });
 
 server
   .listen({ port: process.env.SERVER_PORT })
