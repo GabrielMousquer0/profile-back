@@ -16,12 +16,12 @@ module.exports = {
         .update({ username });
       return usernameUpdate;
     },
-    editPassword: async (_, { password, id }, { knex }) => {
+    editPassword: async (obj, { password, id }, { knex }) => {
       const passwordHashUpdate = await bcrypt.hash(password, 10);
       const [passwordUpdate] = await knex('users')
         .where({ id })
         .update({ password: passwordHashUpdate })
-        .returning('username', 'email');
+        .returning(['username', 'email', 'id']);
       return passwordUpdate;
     },
     editAvatar: async (_, { avatar, id }, { knex }) => {
