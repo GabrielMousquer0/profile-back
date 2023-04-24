@@ -1,0 +1,7 @@
+  type User {
+    id: ID!
+    username: String!
+    auth: Auth!
+    infos: Info!
+    languages: [Languages]!
+  }
