@@ -1,7 +1,7 @@
   type User {
     id: ID!
+    email: String!
     username: String!
-    auth: Auth!
     infos: Info!
     languages: [Languages]!
   }
