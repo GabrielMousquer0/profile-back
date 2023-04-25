@@ -1,8 +1,8 @@
 module.exports = {
   User: {
     infos: async ({ id }, _, { knex }) => {
-      return knex('users')
-        .first('created_at', 'role', 'avatar', 'description')
+      return await knex('users')
+        .first('description', 'avatar', 'created_at', 'role')
         .where({ id });
     },
   },
