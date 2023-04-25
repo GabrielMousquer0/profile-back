@@ -3,7 +3,7 @@ module.exports = {
     description: async (_, { description, id }, { knex }) => {
       const [descUserUpdate] = await knex('users')
         .where({ id })
-        .returning('description')
+        .returning(['description', 'id'])
         .update({ description });
       return descUserUpdate;
     },

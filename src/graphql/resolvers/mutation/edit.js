@@ -5,14 +5,14 @@ module.exports = {
     editEmail: async (_, { email, id }, { knex }) => {
       const [emailUpdate] = await knex('users')
         .where({ id })
-        .returning('email')
+        .returning(['email', 'id'])
         .update({ email });
       return emailUpdate;
     },
     editUsername: async (_, { username, id }, { knex }) => {
       const [usernameUpdate] = await knex('users')
         .where({ id })
-        .returning('username')
+        .returning(['username', 'id'])
         .update({ username });
       return usernameUpdate;
     },
@@ -27,7 +27,7 @@ module.exports = {
     editAvatar: async (_, { avatar, id }, { knex }) => {
       const [avatarUpdate] = await knex('users')
         .where({ id })
-        .returning('avatar')
+        .returning(['avatar', 'id'])
         .update({ avatar });
       return avatarUpdate;
     },
