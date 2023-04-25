@@ -8,7 +8,9 @@ module.exports = {
       });
       const hashedPassword = await bcrypt.compare(password, userAuth.password);
       if (hashedPassword) {
-        return await knex('users').first('id').where({ email });
+        return await knex('users')
+          .first('email', 'id', 'username')
+          .where({ email });
       }
     },
   },
