@@ -6,6 +6,6 @@
     editPassword(password: String, id: ID!): User!
     editAvatar(avatar: String, id: ID!): User!
     description(description: String, id: ID!): User!
-    editLanguages(id: ID!, languages: [ID!]): Boolean!
+    insertLanguages(id: ID!, languages: [ID!]): User!
     searchUsers(username: String!): [User]
   }
