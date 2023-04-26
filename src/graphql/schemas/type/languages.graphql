@@ -1,0 +1,6 @@
+  type Languages {
+    id: ID!
+    name: String!
+    icon: String
+    status: Boolean
+  }

@@ -1,23 +1,17 @@
-const auth = async (_, { email, password }, { knex, bcrypt }) => {
-  const userAuth = await knex('users')
-    .first(
-      'id',
-      'email',
-      'password',
-      'username',
-      'role',
-      'avatar',
-      'created_at',
-      'description',
-    )
-    .where({
-      email,
-    });
+const bcrypt = require('bcrypt');
 
-  const hashedPassword = await bcrypt.compare(password, userAuth.password);
-  if (hashedPassword) {
-    return userAuth;
-  }
+module.exports = {
+  Mutation: {
+    auth: async (_, { email, password }, { knex }) => {
+      const userAuth = await knex('users').first('password').where({
+        email,
+      });
+      const hashedPassword = await bcrypt.compare(password, userAuth.password);
+      if (hashedPassword) {
+        return await knex('users')
+          .first('email', 'id', 'username')
+          .where({ email });
+      }
+    },
+  },
 };
-
-module.exports = { auth };
