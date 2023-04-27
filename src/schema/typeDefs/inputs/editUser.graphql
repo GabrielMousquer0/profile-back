@@ -1,0 +1,5 @@
+input editUser {
+  username: String
+  avatar: String
+  email: String
+}
