@@ -1,0 +1,6 @@
+type Info {
+    role: String
+    avatar: String
+    description: String
+    created_at: String
+}
