@@ -2,6 +2,6 @@
     id: ID!
     email: String!
     username: String!
-    infos: Info!
+    infos: Info
     languages: [Languages]!
   }
