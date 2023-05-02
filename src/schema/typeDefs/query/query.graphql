@@ -1,5 +1,5 @@
   type Query {
     users: [User!]!
     user(id: ID!): User!
-    languagesList: [Languages!]!
+    languagesList(id: ID): [Languages]!
   }

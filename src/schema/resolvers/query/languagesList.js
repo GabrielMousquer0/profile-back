@@ -1,9 +1,14 @@
 module.exports = {
   Query: {
-    languagesList: async (_, __, { knex }) => {
-      return knex('languages')
-        .orderBy([{ column: 'id', order: 'asc' }])
-        .select('*');
+    languagesList: async (_, { id }, { knex }) => {
+      const notExist = await knex('languages').whereNotExists(
+        knex
+          .select('*')
+          .from('users_languages')
+          .where({ user: id })
+          .whereRaw('users_languages.language = languages.id'),
+      );
+      return notExist;
     },
   },
 };
