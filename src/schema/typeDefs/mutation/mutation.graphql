@@ -4,6 +4,7 @@
     editUser(input: editUser, id: ID!): User!
     editPassword(password: String!, id: ID!): User!
     description(description: String, id: ID!): User!
-    insertLanguages(id: ID!, languages: [ID!]): User!
+    insertLanguages(id: ID!, language: ID!): Boolean!
+    deleteLanguages(id: ID!, language: ID!): Boolean!
     searchUsers(username: String!): [User]!
   }
