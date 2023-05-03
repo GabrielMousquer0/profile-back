@@ -1,4 +1,5 @@
   type Query {
     users: [User!]!
     user(id: ID!): User!
+    languagesList(id: ID): [Languages]!
   }
