@@ -7,4 +7,5 @@
     insertLanguages(id: ID!, language: ID!): Boolean!
     deleteLanguages(id: ID!, language: ID!): Boolean!
     searchUsers(username: String!): [User]!
+    editOptions(id: ID!, input: OptionsInput): Options!
   }
