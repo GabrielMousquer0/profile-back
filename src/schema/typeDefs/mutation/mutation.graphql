@@ -1,6 +1,6 @@
   type Mutation {
     auth(email: String!, password: String!): User!
-    register(email: String!, username: String!, password: String!): Boolean!
+    register(input: Register): Boolean!
     editUser(input: editUser, id: ID!): User!
     editPassword(password: String!, id: ID!): User!
     description(description: String, id: ID!): User!
