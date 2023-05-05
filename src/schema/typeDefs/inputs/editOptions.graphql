@@ -1,0 +1,6 @@
+  input OptionsInput {
+    languages: Boolean!
+    role: Boolean!
+    description: Boolean!
+    created_at: Boolean!
+  }

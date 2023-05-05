@@ -2,16 +2,26 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
   Mutation: {
-    register: async (_, { email, username, password }, { knex }) => {
+    register: async (_, { input }, { knex }) => {
       if (
         !(await knex('users').first('email').where({
-          email,
+          email: input.email,
         }))
       ) {
-        await knex('users').insert({
-          username,
-          email,
-          password: await bcrypt.hash(password, 10),
+        const [user] = await knex('users').insert(
+          {
+            email: input.email,
+            username: input.username,
+            password: await bcrypt.hash(input.confirmPassword, 10),
+          },
+          ['id'],
+        );
+        await knex('users_options').insert({
+          user_id: user.id,
+          description: true,
+          role: true,
+          created_at: true,
+          languages: true,
         });
         return false;
       }

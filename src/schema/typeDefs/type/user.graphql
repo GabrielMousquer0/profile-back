@@ -4,4 +4,5 @@
     username: String!
     infos: Info
     languages: [Languages]!
+    options: Options
   }
