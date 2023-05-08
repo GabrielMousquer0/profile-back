@@ -8,7 +8,10 @@ module.exports = {
             .update(
               {
                 user_id: id,
-                input,
+                description: input.description,
+                languages: input.languages,
+                role: input.role,
+                created_at: input.created_at,
               },
               ['description', 'role', 'languages', 'created_at'],
             );
