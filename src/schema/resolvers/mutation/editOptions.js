@@ -3,10 +3,9 @@ module.exports = {
     editOptions: async (_, { id, input }, { knex }) => {
       knex
         .transaction(async (trx) => {
-          await trx('users_options').where({ user_id: id }).del();
           const [userOptions] = await trx('users_options')
             .where({ user_id: id })
-            .insert(
+            .update(
               {
                 user_id: id,
                 input,
