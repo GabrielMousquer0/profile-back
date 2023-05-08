@@ -3,19 +3,22 @@ const bcrypt = require('bcrypt');
 module.exports = {
   Mutation: {
     editUser: async (_, { input, id }, { knex }) => {
-      knex
+      return knex
         .transaction(async (trx) => {
           const [userUpdate] = await trx('users')
             .where({ id })
             .update(input, ['id', 'username', 'email', 'avatar']);
           return userUpdate;
         })
+        .then((result) => {
+          return result;
+        })
         .catch((error) => {
           console.log(error);
         });
     },
     editPassword: async (_, { password, id }, { knex }) => {
-      knex
+      return knex
         .transaction(async (trx) => {
           const [passwordUpdate] = await trx('users')
             .where({ id })
@@ -26,6 +29,9 @@ module.exports = {
               'avatar',
             ]);
           return passwordUpdate;
+        })
+        .then((result) => {
+          return result;
         })
         .catch((error) => {
           console.log(error);

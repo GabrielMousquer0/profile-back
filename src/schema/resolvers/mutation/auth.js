@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 module.exports = {
   Mutation: {
     auth: async (_, { email, password }, { knex }) => {
-      knex
+      return knex
         .transaction(async (trx) => {
           const userAuth = await trx('users').first('password').where({
             email,
@@ -17,6 +17,9 @@ module.exports = {
               .first('email', 'id', 'username')
               .where({ email });
           }
+        })
+        .then((result) => {
+          return result;
         })
         .catch((error) => {
           console.log(error);
