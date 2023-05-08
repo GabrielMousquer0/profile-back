@@ -1,7 +1,13 @@
 module.exports = {
   User: {
     options: async ({ id }, _, { knex }) => {
-      return knex('users_options').first().where({ user_id: id });
+      knex
+        .transaction((trx) => {
+          return trx('users_options').first().where({ user_id: id });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };

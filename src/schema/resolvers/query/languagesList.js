@@ -1,13 +1,19 @@
 module.exports = {
   Query: {
     languagesList: async (_, { id }, { knex }) => {
-      return await knex('languages').whereNotExists(
-        knex
-          .select('*')
-          .from('users_languages')
-          .where({ user: id })
-          .whereRaw('users_languages.language = languages.id'),
-      );
+      knex
+        .transaction(async (trx) => {
+          return await trx('languages').whereNotExists(
+            trx
+              .select('*')
+              .from('users_languages')
+              .where({ user: id })
+              .whereRaw('users_languages.language = languages.id'),
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };

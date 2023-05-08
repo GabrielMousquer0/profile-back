@@ -1,9 +1,15 @@
 module.exports = {
   Query: {
     users: async (_, __, { knex }) => {
-      return knex('users')
-        .orderBy([{ column: 'id', order: 'asc' }])
-        .select('*');
+      knex
+        .transaction((trx) => {
+          return trx('users')
+            .orderBy([{ column: 'id', order: 'asc' }])
+            .select('*');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
