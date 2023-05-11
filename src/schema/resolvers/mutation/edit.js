@@ -10,18 +10,22 @@ module.exports = {
     },
     editPassword: async (_, { input, id }, { knex }) => {
       const userPassword = await knex('users').where({ id }).first('password');
-      if (await bcrypt.compare(input.current, userPassword.password)) {
-        return;
+      const comparePassword = await bcrypt.compare(
+        input.current,
+        userPassword.password,
+      );
+      if (comparePassword) {
+        const [passwordUpdate] = await knex('users')
+          .where({ id })
+          .update({ password: await bcrypt.hash(`123`, 10) }, [
+            'id',
+            'username',
+            'email',
+            'avatar',
+          ]);
+        return passwordUpdate;
       }
-      const [passwordUpdate] = await knex('users')
-        .where({ id })
-        .update({ password: await bcrypt.hash(`123`, 10) }, [
-          'id',
-          'username',
-          'email',
-          'avatar',
-        ]);
-      return passwordUpdate;
+      return;
     },
   },
 };
